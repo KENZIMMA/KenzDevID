@@ -1,318 +1,298 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KenzDevID | HTML Coding Beginner</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>KenzDevID - Web Produk & Layanan Digital</title>
     <style>
         :root {
             --primary: #6c5ce7;
             --secondary: #a29bfe;
             --dark: #2d3436;
             --light: #f5f6fa;
-            --whatsapp: #25D366;
-            --youtube: #FF0000;
-            --telegram: #0088cc;
-            --neon-effect: 0 0 10px rgba(108, 92, 231, 0.8), 0 0 20px rgba(108, 92, 231, 0.6), 0 0 30px rgba(108, 92, 231, 0.4);
+            --success: #00b894;
+            --payment: #3498db;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
             display: flex;
             justify-content: center;
-            align-items: center;
+            list-style: none;
+            padding: 1rem;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        section {
             min-height: 100vh;
-            padding: 20px;
-            color: var(--light);
-            overflow-x: hidden;
+            padding: 4rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle var(--duration) infinite ease-in-out;
-            opacity: 0;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; }
-            50% { opacity: var(--opacity); }
-        }
-        
-        .profile-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 450px;
-            padding: 40px;
+        .section-title {
             text-align: center;
-            position: relative;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
             overflow: hidden;
-            z-index: 1;
-            transition: transform 0.5s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 2rem;
         }
         
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent 0%,
-                rgba(108, 92, 231, 0.1) 50%,
-                transparent 100%
-            );
-            transform: rotate(30deg);
-            z-index: -1;
-            animation: shine 6s infinite linear;
-        }
-        
-        @keyframes shine {
-            0% { transform: rotate(30deg) translate(-30%, -30%); }
-            100% { transform: rotate(30deg) translate(30%, 30%); }
-        }
-        
-        .profile-card:hover {
+        .card:hover {
             transform: translateY(-10px);
         }
         
-        .profile-img-container {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            padding: 8px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            box-shadow: var(--neon-effect);
-            animation: pulse 2s infinite alternate;
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
-        @keyframes pulse {
-            0% { box-shadow: 0 0 10px rgba(108, 92, 231, 0.8), 0 0 20px rgba(108, 92, 231, 0.6), 0 0 30px rgba(108, 92, 231, 0.4); }
-            100% { box-shadow: 0 0 15px rgba(108, 92, 231, 0.9), 0 0 30px rgba(108, 92, 231, 0.7), 0 0 45px rgba(108, 92, 231, 0.5); }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
         
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #1a1a2e;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-        
-        .profile-name {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            position: relative;
+        .btn {
             display: inline-block;
-        }
-        
-        .profile-name::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-        
-        .profile-title {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-        
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 25px;
+            color: white;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
-            color: white;
-            font-weight: 500;
+            margin-top: 1rem;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: none;
+            cursor: pointer;
+            font-weight: 500;
         }
         
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-            z-index: -1;
+        .btn-primary {
+            background-color: var(--primary);
         }
         
-        .social-link:hover::before {
-            transform: translateX(100%);
+        .btn-success {
+            background-color: var(--success);
         }
         
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        .btn-payment {
+            background-color: var(--payment);
         }
         
-        .social-link i {
-            margin-right: 12px;
-            font-size: 22px;
-            transition: transform 0.3s;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .social-link:hover i {
-            transform: scale(1.2);
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
         }
         
-        .whatsapp {
-            background-color: var(--whatsapp);
+        /* Active section highlighting */
+        .active {
+            background-color: var(--primary);
+            color: white !important;
         }
         
-        .whatsapp-group {
-            background-color: #128C7E;
-        }
-        
-        .whatsapp-channel {
-            background-color: #075E54;
-        }
-        
-        .youtube {
-            background-color: var(--youtube);
-        }
-        
-        .telegram {
-            background-color: var(--telegram);
-        }
-        
-        .floating-icons {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .floating-icon {
-            position: absolute;
-            opacity: 0.1;
-            font-size: 24px;
-            animation: float linear infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
-        }
-        
-        @media (max-width: 480px) {
-            .profile-card {
-                padding: 30px 20px;
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .profile-img-container {
-                width: 150px;
-                height: 150px;
+            nav ul li {
+                margin: 0.5rem 0;
             }
             
-            .profile-name {
-                font-size: 24px;
+            section {
+                padding: 2rem 0;
+                min-height: auto;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <header id="home">
+        <div class="logo">KenzDevID</div>
+        <div class="tagline">Selamat datang di dunia digital milik Rexz!</div>
+    </header>
     
-    <div class="floating-icons" id="floating-icons"></div>
-    
-    <div class="profile-card">
-        <div class="profile-img-container">
-            <img src="https://qu.ax/UkKml.jpg" alt="KenzDevID" class="profile-img">
-        </div>
+    <div class="container">
+        <section id="produk">
+            <h2 class="section-title">Produk Kami</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon" style="color: var(--primary);">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="card-title">Panel Pterodactyl</h3>
+                    <p>Solusi lengkap untuk kebutuhan bot dan panel management Anda</p>
+                    <a href="https://kenz-dev-id-stote.vercel.app" class="btn btn-primary">Lihat Panel</a>
+                </div>
+            </div>
+        </section>
         
-        <h1 class="profile-name">KenzDevID</h1>
-        <p class="profile-title">HTML Coding Beginner</p>
+        <section id="nokos">
+            <h2 class="section-title">Web Produk Nokos</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon" style="color: var(--success);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title">Web Produk Nokos</h3>
+                    <p>Koleksi web produk nokos berkualitas untuk berbagai kebutuhan bisnis online</p>
+                    <a href="#" class="btn btn-success">Belum Tersedia</a>
+                </div>
+            </div>
+        </section>
         
-        <div class="social-links">
-            <a href="https://wa.me/6285194715198" class="social-link whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> My WhatsApp Number
-            </a>
-            
-            <a href="https://chat.whatsapp.com/CcFoOtNB1DBGLrcnWej4sE" class="social-link whatsapp-group" target="_blank">
-                <i class="fab fa-whatsapp"></i> Grup WhatsApp
-            </a>
-            
-            <a href="https://whatsapp.com/channel/0029VbAfRvE5kg73kUaiWe0k" class="social-link whatsapp-channel" target="_blank">
-                <i class="fab fa-whatsapp"></i> Channel WhatsApp
-            </a>
-            
-            <a href="https://kenz-dev-id-payment.vercel.app" class="social-link youtube" target="_blank">
-                <i class="fab fa-kajajaj"></i> Web Payment
-            </a>
-            
-            <a href="https://kenz-dev-id-stote.vercel.app" class="social-link telegram" target="_blank">
-                <i class="fab fa-akakkaka"></i> Web Store
-            </a>
-        </div>
+        <section id="payment">
+            <h2 class="section-title">Web Payment</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon" style="color: var(--payment);">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="card-title">Payment KenzDevID</h3>
+                    <p>Solusi pembayaran online lengkap dengan berbagai metode pembayaran</p>
+                    <a href="https://kenz-dev-id-payment.vercel.app" class="btn btn-payment">Pesan Sekarang</a>
+                </div>
+        
+        <section id="kontak">
+            <h2 class="section-title">Kontak Admin</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon" style="color: var(--primary);">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="card-title">Bantuan & Support</h3>
+                    <p>Hubungi kami untuk pertanyaan atau bantuan teknis</p>
+                    <a href="https://wa.me/6285194715198" class="btn btn-primary">Hubungi Sekarang</a>
+                </div>
+            </div>
+        </section>
     </div>
     
-    
+    <footer>
+        <p>&copy; 2025 KenzDevID. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight active section in navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
-</html>
+            </html>
