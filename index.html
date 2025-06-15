@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KenzDevID - Web Produk & Layanan Digital</title>
+    <title>KenzDevID - Script & Layanan Digital</title>
     <style>
         :root {
-            --primary: #6c5ce7;
-            --secondary: #a29bfe;
-            --dark: #2d3436;
-            --light: #f5f6fa;
-            --success: #00b894;
-            --payment: #3498db;
+            --primary: #6c5ce7;       /* Ungu */
+            --secondary: #a29bfe;     /* Ungu muda */
+            --dark: #2d3436;          /* Hitam */
+            --light: #f5f6fa;         /* Putih */
+            --success: #00b894;      /* Hijau */
+            --premium: #e84393;       /* Pink */
         }
         
         * {
@@ -25,274 +25,120 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 1rem;
-        }
-        
-        nav ul li {
-            margin: 0 1.5rem;
-        }
-        
-        nav ul li a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        nav ul li a:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
             padding: 0 2rem;
         }
         
-        section {
-            min-height: 100vh;
-            padding: 4rem 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .content {
+            max-width: 800px;
+            margin: 3rem auto;
         }
         
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+        h1 {
             color: var(--primary);
-        }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
             text-align: center;
-            padding: 2rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
         }
         
-        .card:hover {
-            transform: translateY(-10px);
+        h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
         }
         
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        .card-title {
+        .product-title {
+            color: var(--primary);
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
         
         .btn {
             display: inline-block;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
             text-decoration: none;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
             font-weight: 500;
+            margin-top: 1rem;
         }
         
         .btn-primary {
             background-color: var(--primary);
+            color: white;
         }
         
         .btn-success {
             background-color: var(--success);
+            color: white;
         }
         
-        .btn-payment {
-            background-color: var(--payment);
+        .btn-premium {
+            background-color: var(--premium);
+            color: white;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: var(--secondary);
+            margin: 2rem 0;
         }
         
         footer {
-            background-color: var(--dark);
-            color: white;
             text-align: center;
-            padding: 2rem;
             margin-top: 3rem;
-        }
-        
-        /* Active section highlighting */
-        .active {
-            background-color: var(--primary);
-            color: white !important;
-        }
-        
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            section {
-                padding: 2rem 0;
-                min-height: auto;
-            }
+            padding: 1.5rem;
+            color: var(--dark);
+            font-size: 0.9rem;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header id="home">
-        <div class="logo">KenzDevID</div>
-        <div class="tagline">Selamat datang di dunia digital milik KenzDevId</div>
-    </header>
-    
-    <div class="container">
-        <section id="produk">
-            <h2 class="section-title">Produk Kami</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <div class="card-icon" style="color: var(--primary);">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3 class="card-title">Panel Pterodactyl</h3>
-                    <p>Solusi lengkap untuk kebutuhan bot dan panel management Anda</p>
-                    <a href="https://kenz-dev-id-stote.vercel.app" class="btn btn-primary">Lihat Panel</a>
-                </div>
-            </div>
-        </section>
+    <div class="content">
+        <h1>KenzDevID</h1>
         
-        <section id="nokos">
-            <h2 class="section-title">Web Produk Nokos</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <div class="card-icon" style="color: var(--success);">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="card-title">Web Produk Nokos</h3>
-                    <p>Koleksi web produk nokos berkualitas untuk berbagai kebutuhan bisnis online</p>
-                    <a href="#" class="btn btn-success">Belum Tersedia</a>
-                </div>
-            </div>
-        </section>
+        <div class="product-card">
+            <h2 class="product-title">Panel & Sewa Bot</h2>
+            <p>Solusi lengkap untuk kebutuhan bot dan panel management Anda</p>
+            <a href="https://kenz-dev-id-stote.vercel.app" class="btn btn-primary">Lihat Produk</a>
+        </div>
         
-        <section id="payment">
-            <h2 class="section-title">Web Payment</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <div class="card-icon" style="color: var(--payment);">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3 class="card-title">Payment KenzDevID</h3>
-                    <p>Solusi pembayaran online lengkap dengan berbagai metode pembayaran</p>
-                    <a href="https://kenz-dev-id-payment.vercel.app" class="btn btn-payment">Pesan Sekarang</a>
-                </div>
+        <hr>
         
-        <section id="kontak">
-            <h2 class="section-title">Kontak Admin</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <div class="card-icon" style="color: var(--primary);">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="card-title">Bantuan & Support</h3>
-                    <p>Hubungi kami untuk pertanyaan atau bantuan teknis</p>
-                    <a href="https://wa.me/6285194715198" class="btn btn-primary">Hubungi Sekarang</a>
-                </div>
-            </div>
-        </section>
+        <div class="product-card">
+            <h2 class="product-title">Payment</h2>
+            <p>Paymemt All Pay</p>
+            <a href="https://kenz-dev-id-payment.vercel.app" class="btn btn-success">Lihat Payment</a>
+        </div>
+        
+        <hr>
+        
+        <div class="product-card">
+            <h2 class="product-title">Produk Nokos</h2>
+            <p>Semua Produk Nokos Tersedia Disini</p>
+            <a href="#" class="btn btn-premium">Coming Soon</a>
+        </div>
+        
+        <hr>
+        
+        <div class="product-card">
+            <h2 class="product-title">Tentang Kami</h2>
+            <p>Visi & Misi kami dalam menyediakan layanan digital terbaik</p>
+            <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+        </div>
+        
+        <footer>
+            <p>© 2023 KenzDevID. Hak Cipta Dilindungi.</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 KenzDevID. Hak Cipta Dilindungi.</p>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Highlight active section in navigation
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 300)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
-            </html>
+</html>
